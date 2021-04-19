@@ -4,8 +4,9 @@
  *
  * @param {Number} size The dimensions of the grid.
  * @param {Number} mines The number of mines.
+ * @returns {Grid}
  */
-function initializeGrid(size, mines) {
+function initializeGrid(size: number, mines: number) {
   const grid = Array(size);
   let row, col;
   
@@ -34,7 +35,7 @@ function initializeGrid(size, mines) {
   // Count adjacent cells
   for ( row = 0; row < size; row++ ) {
     for ( col = 0; col < size; col++ ) {
-      grid[row][col].numAdjacent = countAdjacentMines(row, col);
+      grid[row][col].numAdjacent = countAdjacentMines(grid, row, col);
     }
   }
 
@@ -42,7 +43,16 @@ function initializeGrid(size, mines) {
 }
 
 
-function countAdjacentMines(row, col, debug) {
+/**
+ * Determine how many mines are adjacent to the given cell.
+ *
+ * @param {Object} grid The grid object
+ * @param {Number} row The row of the cell to count
+ * @param {Number} col The column of the cell to count
+ * @param {Boolean} debug Are we debugging?
+ * @returns {Number} The number of mines - range [0-8] - in the adjacent cells.
+ */
+function countAdjacentMines(grid, row: number, col: number, debug: boolean) {
   let adjacent = 0;
   let rowTemp, colTemp;
 
