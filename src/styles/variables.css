@@ -1,6 +1,7 @@
 
 body {
-  --cell-background: #ccc;
+  --cell-background: #666;
+  --cell-border: black;
   --cell-size: 30px;
 }
 

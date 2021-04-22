@@ -17,18 +17,17 @@ export default {
 </script>
 
 <template>
-  <div class="cell" :class="{ mine: cell.hasMine, flag: cell.hasFlag }" @click="clickCell(cell)">
-    <span v-if="!cell.hasFlag">{{cell.numAdjacent}}</span>
-    <span v-if="cell.hasFlag">F</span>
-    <!-- {{cell}} -->
-    <!-- <span v-if="cell.hasMine">X</span> -->
+  <div class="cell" :class="{ mine: cell.hasMine, flag: cell.hasFlag }" @click="clickCell(cell)" @contextmenu.prevent="toggleFlag(cell)">
+    <span v-if="!cell.hasFlag && !cell.hasMine">{{cell.numAdjacent}}</span>
+    <font-awesome-icon icon="bomb" v-if="cell.hasMine" />
+    <font-awesome-icon icon="flag" v-if="cell.hasFlag" />
   </div>
 </template>
 
 <style scoped>
 .cell {
   background-color: var(--cell-background);
-  border: 1px solid #999;
+  border: 1px solid var(--cell-border);
   display: table-cell;
   height: var(--cell-size, 20px);
   width: var(--cell-size, 20px);
@@ -36,12 +35,27 @@ export default {
 }
 
 .cell:hover {
-  background-color: lightblue;
+  background-color: #333;
   border: 1px solid midnightblue;
+  color: white;
+}
+
+.cell.revealed {
+  background-color: #eee;
+  color: black;
+}
+
+.cell.mine.revealed {
+  background-color: red;
+  color: white;
+}
+
+.cell.unrevealed-mine {
+    color: white;
 }
 
 .cell.flag {
-  background-color: lightgreen;
+  background-color: lightblue;
 }
 
 .cell.mine {
