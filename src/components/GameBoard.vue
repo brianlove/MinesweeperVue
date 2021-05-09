@@ -78,8 +78,6 @@ export default {
 </script>
 
 <template>
-  <h1>Game board goes here</h1>
-
   <div class="board">
     <div class="row" v-for="(row, index) in grid.cells" :key="index">
       <GameBoardCell
@@ -97,6 +95,5 @@ export default {
 .board {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
 }
 </style>
