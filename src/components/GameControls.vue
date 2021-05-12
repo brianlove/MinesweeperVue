@@ -9,12 +9,21 @@ export default {
       isMinesValid: true,
     };
   },
+  computed: {
+    minesLeft() {
+      return this.numMines - this.flagsUsed;
+    },
+  },
   props: {
     size: {
       type: Number,
       required: true,
     },
     mines: {
+      type: Number,
+      required: true,
+    },
+    flagsUsed: {
       type: Number,
       required: true,
     },
@@ -42,6 +51,7 @@ export default {
 </script>
 
 <template>
+<div class="controls">
   <div class="config">
     <div>
       Size:
@@ -61,17 +71,30 @@ export default {
     </div>
     <button type="button" @click="reset">Reset</button>
   </div>
-
+  <div class="info">
+    Flags: {{flagsUsed}}
+    Mines left: {{minesLeft}}
+  </div>
+</div>
 </template>
 
 <style scoped>
-.config {
+.controls {
   display: flex;
   margin-bottom: 0.5rem;
 }
 
+.config {
+  display: flex;
+}
+
 .config > * {
   margin-right: 0.5rem;
+}
+
+.info {
+  display: flex;
+  padding: 0.2rem 0;
 }
 
 .invalid {

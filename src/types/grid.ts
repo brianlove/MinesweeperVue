@@ -157,6 +157,19 @@ export default class Grid {
 
 
   /**
+   * Determine how many cells on the game board have been flagged.
+   *
+   * @returns The number of cells that have been flagged.
+   */
+  countFlaggedCells(): number {
+    return this.cells.flat()
+                     .map(cell => cell.hasFlag)
+                     .filter(val => val)
+                     .length;
+  }
+
+
+  /**
    * Determine which adjacent cells can be revealed to the player.
    *
    * @param row The target cell's row

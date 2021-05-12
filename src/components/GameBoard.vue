@@ -61,6 +61,9 @@ export default {
 
       const result = grid.toggleFlag(flaggedCell);
 
+      const flagsUsed = grid.countFlaggedCells();
+      context.emit('update-flag-count', flagsUsed);
+
       if ( !result.gameActive ) {
         console.info("GAME OVER:", result); // DEBUG
         context.emit('game-finished', result?.playerVictory);

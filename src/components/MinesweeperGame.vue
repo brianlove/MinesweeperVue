@@ -12,9 +12,10 @@ export default {
     return {
       isGameActive: true,
       didPlayerWin: false,
-      size: 8,
-      mines: 8,
+      size: 10,
+      mines: 10,
       gameKey: 1,
+      flagsUsed: 0,
     };
   },
   methods: {
@@ -25,6 +26,7 @@ export default {
     onGameReset({size, mines}) {
       this.size = size;
       this.mines = mines;
+      this.flagsUsed = 0;
 
       this.isGameActive = true;
       this.didPlayerWin = false;
@@ -33,7 +35,10 @@ export default {
       this.gameKey += 1;
 
       console.info("game key:", this.gameKey); // DEBUG
-    }
+    },
+    onUpdateFlagCount(flagsUsed) {
+      this.flagsUsed = flagsUsed;
+    },
   },
 }
 </script>
@@ -46,6 +51,7 @@ export default {
       <GameControls
         :size="size"
         :mines="mines"
+        :flags-used="flagsUsed"
         @game-reset="onGameReset"
       />
 
@@ -54,6 +60,7 @@ export default {
         :size="size"
         :mines="mines"
         @game-finished="onGameFinished"
+        @update-flag-count="onUpdateFlagCount"
       />
 
       <div class="notifications" v-if="!isGameActive">
