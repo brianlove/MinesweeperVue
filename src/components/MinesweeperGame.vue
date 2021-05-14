@@ -44,8 +44,8 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <div class="minesweeper">
+  <div class="minesweeper">
+    <div class="container">
       <h1>Minesweeper</h1>
 
       <GameControls
@@ -72,12 +72,9 @@ export default {
 </template>
 
 <style scoped>
-.container {
-  display: flex;
-}
-
 .minesweeper {
-  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
 }
 
 .notifications {

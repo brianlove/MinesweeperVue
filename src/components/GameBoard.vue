@@ -81,6 +81,7 @@ export default {
 </script>
 
 <template>
+<div class="board-container">
   <div class="board">
     <div class="row" v-for="(row, index) in grid.cells" :key="index">
       <GameBoardCell
@@ -92,9 +93,15 @@ export default {
       />
     </div>
   </div>
+</div>
 </template>
 
 <style scoped>
+.board-container {
+  display: flex;
+  justify-content: space-around;
+}
+
 .board {
   display: flex;
   flex-direction: column;
