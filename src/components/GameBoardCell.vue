@@ -18,11 +18,9 @@ export default {
   },
   methods: {
     clickCell(cell) {
-      console.info("click cell", cell); // DEBUG
       this.$emit('click-cell', cell);
     },
     toggleFlag(cell) {
-      console.info("toggle flag", cell); // DEBUG
       this.$emit('toggle-flag', cell);
     }
   },

@@ -95,7 +95,7 @@ export default class Grid {
    *          and, if not, whether or not the player won (`playerVictory`).
    */
   clickCell(clickedCell: Cell): { gameActive: boolean, playerVictory?: boolean } {
-    console.info("[Grid] clicked cell:", clickedCell); // DEBUG
+    console.debug("[Grid] clicked cell:", clickedCell); // DEBUG
 
     if ( clickedCell.hasFlag ) {
       return {
@@ -105,7 +105,6 @@ export default class Grid {
 
     if ( clickedCell.hasMine ) {
       clickedCell.isRevealed = true;
-      console.debug("-- nope!  has mine"); // DEBUG
       return {
         gameActive: false,
         playerVictory: false,
@@ -176,8 +175,6 @@ export default class Grid {
    * @param col The target cell's column
    */
   revealCells(row: number, col: number) {
-    console.info(`revealCells(${row}, ${col})`); // DEBUG
-
     // It should never come to this, but just in case.
     if ( this.cells[row][col].hasMine ) {
       return;
