@@ -1,4 +1,6 @@
-# minesweeper-vue
+# Minesweeper Vue
+
+An implementation of the classic game [_Minesweeper_](https://en.wikipedia.org/wiki/Minesweeper_\(video_game\)), written as part of learning Vue.
 
 ## Project setup
 ```
